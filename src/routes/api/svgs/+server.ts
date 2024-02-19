@@ -9,7 +9,7 @@ import { svgsData } from '@/data';
 
 export const GET = async ({ url, request }: RequestEvent) => {
   const fullUrl = url.origin ?? 'svgl.vercel.app';
-  const ip = request.headers.get('x-forwarded-for') ?? '';
+  /*const ip = request.headers.get('x-forwarded-for') ?? '';
   const { success, reset } = await ratelimit.limit(ip);
 
   // Error 429 | If rate limit is exceeded:
@@ -22,7 +22,7 @@ export const GET = async ({ url, request }: RequestEvent) => {
         'Retry-After': retryAfter.toString()
       }
     });
-  }
+  }*/
 
   // Params:
   const getLimitParams = url.searchParams.get('limit');
