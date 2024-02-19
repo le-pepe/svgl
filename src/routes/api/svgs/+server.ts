@@ -2,7 +2,7 @@ import type { RequestEvent } from './$types';
 import type { iSVG } from '@/types/svg';
 
 import { error, json } from '@sveltejs/kit';
-import { ratelimit } from '@/server/redis';
+// import { ratelimit } from '@/server/redis';
 
 // Data:
 import { svgsData } from '@/data';
