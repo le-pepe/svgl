@@ -32,7 +32,7 @@ const fullRouteSvgsData = svgsData.map((svg) => {
 const app = new Hono();
 const cache = new Map();
 
-class RedisRateLimiter {
+/*class RedisRateLimiter {
   static instance: Ratelimit;
   static getInstance(c: Context<Env, '/api/*', BlankInput>) {
     if (!this.instance) {
@@ -57,7 +57,7 @@ class RedisRateLimiter {
   }
 }
 
-/*app.use(async (c, next) => {
+app.use(async (c, next) => {
   const ratelimit = RedisRateLimiter.getInstance(c);
   c.set('ratelimit', ratelimit);
   await next();
