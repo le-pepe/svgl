@@ -3,7 +3,7 @@ import type { RequestEvent } from '../$types';
 import { transform } from '@svgr/core';
 import { json, redirect } from '@sveltejs/kit';
 
-import { ratelimit } from '@/server/redis';
+//import { ratelimit } from '@/server/redis';
 
 // SVGR Plugins:
 import svgrJSX from '@svgr/plugin-jsx';
@@ -14,7 +14,7 @@ export const GET = async () => {
 
 export const POST = async ({ request }: RequestEvent) => {
   const ip = request.headers.get('x-forwarded-for') ?? '';
-  const { success, reset } = await ratelimit.limit(ip);
+  /*const { success, reset } = await ratelimit.limit(ip);
 
   // Error 429 | If rate limit is exceeded:
   if (!success) {
@@ -26,7 +26,7 @@ export const POST = async ({ request }: RequestEvent) => {
         'Retry-After': retryAfter.toString()
       }
     });
-  }
+  }*/
 
   try {
     const body = await request.json();
