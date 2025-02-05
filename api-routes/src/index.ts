@@ -57,11 +57,11 @@ class RedisRateLimiter {
   }
 }
 
-app.use(async (c, next) => {
+/*app.use(async (c, next) => {
   const ratelimit = RedisRateLimiter.getInstance(c);
   c.set('ratelimit', ratelimit);
   await next();
-});
+});*/
 
 app.use('/api/*', cors());
 
@@ -71,11 +71,11 @@ app.get('/', async (c) => {
   const search = c.req.query('search');
   const ratelimit = c.get('ratelimit');
   const ip = c.req.raw.headers.get('CF-Connecting-IP');
-  const { success } = await ratelimit.limit(ip ?? 'anonymous');
+  /*const { success } = await ratelimit.limit(ip ?? 'anonymous');
 
   if (!success) {
     return c.json({ error: '🛑 Too many request' }, 429);
-  }
+  }*/
 
   if (limit) {
     const limitNumber = parseInt(limit);
@@ -101,11 +101,11 @@ app.get('/', async (c) => {
 app.get('/categories', async (c) => {
   const ratelimit = c.get('ratelimit');
   const ip = c.req.raw.headers.get('CF-Connecting-IP');
-  const { success } = await ratelimit.limit(ip ?? 'anonymous');
+  /*const { success } = await ratelimit.limit(ip ?? 'anonymous');
 
   if (!success) {
     return c.json({ error: '🛑 Too many request' }, 429);
-  }
+  }*/
 
   const categoryTotals: Record<string, number> = {};
 
@@ -133,11 +133,11 @@ app.get('/category/:category', async (c) => {
   const targetCategory = category.charAt(0).toUpperCase() + category.slice(1);
   const ratelimit = c.get('ratelimit');
   const ip = c.req.raw.headers.get('CF-Connecting-IP');
-  const { success } = await ratelimit.limit(ip ?? 'anonymous');
+  /*const { success } = await ratelimit.limit(ip ?? 'anonymous');
 
   if (!success) {
     return c.json({ error: '🛑 Too many request' }, 429);
-  }
+  }*/
 
   const categorySvgs = fullRouteSvgsData.filter((svg) => {
     if (typeof svg.category === 'string') {
